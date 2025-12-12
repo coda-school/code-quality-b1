@@ -11,16 +11,8 @@ class Yatzy
      */
     public static function yatzyScore(array $dice): int
     {
-        $counts = array_fill(0, 6, 0);
-        foreach ($dice as $die) {
-            ++$counts[$die - 1];
-        }
-        foreach (range(0, count($counts) - 1) as $i) {
-            if ($counts[$i] === 5) {
-                return 50;
-            }
-        }
-        return 0;
+        $counts = array_count_values($dice);
+        return in_array(5, $counts, true) ? 50 : 0;
     }
 
     public static function twoPairs(int $d1, int $d2, int $d3, int $d4, int $d5): int
