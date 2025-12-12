@@ -162,7 +162,7 @@ class Yatzy
         return 0;
     }
 
-    public function fives(): int
+    public function sixes(): int
     {
         return self::number($this->dice, 5);
     }
@@ -181,11 +181,6 @@ class Yatzy
             }
         }
         return $sum;
-    }
-
-    public function sixes(): int
-    {
-        return self::number($this->dice, 5);
     }
 
     public function scorePair(int $d1, int $d2, int $d3, int $d4, int $d5): int

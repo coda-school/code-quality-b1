@@ -55,9 +55,9 @@ class YatzyTest extends TestCase
 
     public function testFives(): void
     {
-        self::assertSame(10, (new Yatzy(4, 4, 4, 5, 5))->fives());
-        self::assertSame(15, (new Yatzy(4, 4, 5, 5, 5))->fives());
-        self::assertSame(20, (new Yatzy(4, 5, 5, 5, 5))->fives());
+        self::assertSame(10, Yatzy::number(array(4, 4, 4, 5, 5), 5));
+        self::assertSame(15, Yatzy::number(array(4, 4, 5, 5, 5), 5));
+        self::assertSame(20, Yatzy::number(array(4, 5, 5, 5, 5), 5));
     }
 
     public function sixes_test(): void
