@@ -21,43 +21,15 @@ class Yatzy
 
     public static function threeOfAKind(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
-        $t = array_fill(0, 6, 0);
-        ++$t[$d1 - 1];
-        ++$t[$d2 - 1];
-        ++$t[$d3 - 1];
-        ++$t[$d4 - 1];
-        ++$t[$d5 - 1];
-        for ($i = 0; $i !== 6; $i++) {
-            if ($t[$i] >= 3) {
-                return ($i + 1) * 3;
+        $counts = array_count_values([$d1, $d2, $d3, $d4, $d5]);
+        foreach ($counts as $value => $count) {
+            if ($count >= 3) {
+                return $value * 3;
             }
         }
         return 0;
     }
 
-    public static function twoPairs(int $d1, int $d2, int $d3, int $d4, int $d5): int
-    {
-        $counts = array_fill(0, 6, 0);
-        ++$counts[$d1 - 1];
-        ++$counts[$d2 - 1];
-        ++$counts[$d3 - 1];
-        ++$counts[$d4 - 1];
-        ++$counts[$d5 - 1];
-        $n = 0;
-        $score = 0;
-        for ($i = 0; $i !== 6; $i++) {
-            if ($counts[6 - $i - 1] >= 2) {
-                $n = $n + 1;
-                $score += (6 - $i);
-            }
-        }
-
-        if ($n === 2) {
-            return $score * 2;
-        }
-
-        return 0;
-    }
 
     public static function smallStraight(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
