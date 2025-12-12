@@ -6,6 +6,10 @@ namespace Yatzy;
 
 class Yatzy
 {
+    private const YATZY_SCORE = 50;
+    private const SMALL_STRAIGHT = 15;
+    private const LARGE_STRAIGHT = 20;
+
     public static function number(Roll $roll, int $searchedValue): int
     {
         return array_sum(
@@ -16,7 +20,7 @@ class Yatzy
     public static function yatzy(Roll $roll): int
     {
         $counts = array_count_values($roll->dice());
-        return in_array(5, $counts, true) ? 50 : 0;
+        return in_array(5, $counts, true) ? self::YATZY_SCORE : 0;
     }
 
     public static function threeOfAKind(Roll $roll): int
@@ -44,13 +48,13 @@ class Yatzy
     {
         $dice = $roll->dice();
         sort($dice);
-        return ($dice === [1, 2, 3, 4, 5]) ? 15 : 0;
+        return ($dice === [1, 2, 3, 4, 5]) ? self::SMALL_STRAIGHT : 0;
     }
 
     public static function largeStraight(Roll $roll): int
     {
         $dice = $roll->dice();
-        return (count(array_unique($dice)) === 5 && !array_diff([2, 3, 4, 5, 6], $dice)) ? 20 : 0;
+        return (count(array_unique($dice)) === 5 && !array_diff([2, 3, 4, 5, 6], $dice)) ? self::LARGE_STRAIGHT : 0;
     }
 
     public static function fullHouse(Roll $roll): int
@@ -61,6 +65,7 @@ class Yatzy
         $pairValue = 0;
         $threeValue = 0;
 
+        // key => value
         foreach ($counts as $value => $count) {
             if ($count === 2) {
                 $hasPair = true;
