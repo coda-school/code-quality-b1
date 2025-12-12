@@ -86,15 +86,15 @@ class YatzyTest extends TestCase
 
     public function testLargeStraight(): void
     {
-        assertSame(20, Yatzy::largeStraight(6, 2, 3, 4, 5));
-        assertSame(20, Yatzy::largeStraight(2, 3, 4, 5, 6));
-        assertSame(0, Yatzy::largeStraight(1, 2, 2, 4, 5));
+        assertSame(20, Yatzy::largeStraight(Roll::from(array(6, 2, 3, 4, 5))));
+        assertSame(20, Yatzy::largeStraight(Roll::from(array(2, 3, 4, 5, 6))));
+        assertSame(0, Yatzy::largeStraight(Roll::from(array(1, 2, 2, 4, 5))));
     }
 
     public function testFullHouse(): void
     {
-        assertSame(18, Yatzy::fullHouse(6, 2, 2, 2, 6));
-        assertSame(0, Yatzy::fullHouse(2, 3, 4, 5, 6));
+        assertSame(18, Yatzy::fullHouse(Roll::from(array(6, 2, 2, 2, 6))));
+        assertSame(0, Yatzy::fullHouse(Roll::from(array(2, 3, 4, 5, 6))));
     }
 
     public function testChanceScoresSumOfAllDice(): void
