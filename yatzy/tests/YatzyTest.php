@@ -11,58 +11,56 @@ use function PHPUnit\Framework\assertSame;
 
 class YatzyTest extends TestCase
 {
-    public function testChanceScoresSumOfAllDice(): void
+    public function testOnes(): void
     {
-        assertSame(15, Yatzy::chance(Roll::from(array(2, 3, 4, 5, 1))));
-        assertSame(16, Yatzy::chance(Roll::from(array(3, 3, 4, 5, 1))));
+        $this->assertNumber(1, array(1, 2, 3, 4, 5), 1);
+        $this->assertNumber(2, array(1, 2, 1, 4, 5), 1);
+        $this->assertNumber(0, array(6, 2, 2, 4, 5), 1);
+        $this->assertNumber(4, array(1, 2, 1, 1, 1), 1);
     }
 
-    public function testYatzyScores50(): void
+    /**
+     * @param int $expectedValue
+     * @param int[] $dice
+     * @param int $number
+     * @return void
+     */
+    public function assertNumber(int $expectedValue, array $dice, int $number): void
     {
-        assertSame(50, Yatzy::yatzy(Roll::from(array(4, 4, 4, 4, 4))));
-        assertSame(50, Yatzy::yatzy(Roll::from(array(6, 6, 6, 6, 6))));
-        assertSame(0, Yatzy::yatzy(Roll::from(array(6, 6, 6, 6, 3))));
+        assertSame($expectedValue, Yatzy::number(Roll::from($dice), $number));
     }
 
-    public function test1s(): void
+    public function testTwos(): void
     {
-        assertSame(1, Yatzy::number(array(1, 2, 3, 4, 5), 1));
-        assertSame(2, Yatzy::number(array(1, 2, 1, 4, 5), 1));
-        assertSame(0, Yatzy::number(array(6, 2, 2, 4, 5), 1));
-        assertSame(4, Yatzy::number(array(1, 2, 1, 1, 1), 1));
-    }
-
-    public function test2s(): void
-    {
-        assertSame(4, Yatzy::number(array(1, 2, 3, 2, 6), 2));
-        assertSame(10, Yatzy::number(array(2, 2, 2, 2, 2), 2));
+        $this->assertNumber(4, array(1, 2, 3, 2, 6), 2);
+        $this->assertNumber(10, array(2, 2, 2, 2, 2), 2);
     }
 
     public function testThrees(): void
     {
-        assertSame(6, Yatzy::number(array(1, 2, 3, 2, 3), 3));
-        assertSame(12, Yatzy::number(array(2, 3, 3, 3, 3), 3));
+        $this->assertNumber(6, array(1, 2, 3, 2, 3), 3);
+        $this->assertNumber(12, array(2, 3, 3, 3, 3), 3);
     }
 
-    public function testFoursTest(): void
+    public function testFours(): void
     {
-        assertSame(12, Yatzy::number(array(4, 4, 4, 5, 5), 4));
-        assertSame(8, Yatzy::number(array(4, 4, 5, 5, 5), 4));
-        assertSame(4, Yatzy::number(array(4, 5, 5, 5, 5), 4));
+        $this->assertNumber(12, array(4, 4, 4, 5, 5), 4);
+        $this->assertNumber(8, array(4, 4, 5, 5, 5), 4);
+        $this->assertNumber(4, array(4, 5, 5, 5, 5), 4);
     }
 
     public function testFives(): void
     {
-        assertSame(10, Yatzy::number(array(4, 4, 4, 5, 5), 5));
-        assertSame(15, Yatzy::number(array(4, 4, 5, 5, 5), 5));
-        assertSame(20, Yatzy::number(array(4, 5, 5, 5, 5), 5));
+        $this->assertNumber(10, array(4, 4, 4, 5, 5), 5);
+        $this->assertNumber(15, array(4, 4, 5, 5, 5), 5);
+        $this->assertNumber(20, array(4, 5, 5, 5, 5), 5);
     }
 
-    public function sixes_test(): void
+    public function testSixes(): void
     {
-        assertSame(0, Yatzy::number(array(4, 4, 4, 5, 5), 6));
-        assertSame(6, Yatzy::number(array(4, 4, 6, 5, 5), 6));
-        assertSame(18, Yatzy::number(array(6, 5, 6, 6, 5), 6));
+        $this->assertNumber(0, array(4, 4, 4, 5, 5), 6);
+        $this->assertNumber(6, array(4, 4, 6, 5, 5), 6);
+        $this->assertNumber(18, array(6, 5, 6, 6, 5), 6);
     }
 
     public function testOnePair(): void
@@ -104,5 +102,18 @@ class YatzyTest extends TestCase
     {
         assertSame(18, Yatzy::fullHouse(6, 2, 2, 2, 6));
         assertSame(0, Yatzy::fullHouse(2, 3, 4, 5, 6));
+    }
+
+    public function testChanceScoresSumOfAllDice(): void
+    {
+        assertSame(15, Yatzy::chance(Roll::from(array(2, 3, 4, 5, 1))));
+        assertSame(16, Yatzy::chance(Roll::from(array(3, 3, 4, 5, 1))));
+    }
+
+    public function testYatzyScores50(): void
+    {
+        assertSame(50, Yatzy::yatzy(Roll::from(array(4, 4, 4, 4, 4))));
+        assertSame(50, Yatzy::yatzy(Roll::from(array(6, 6, 6, 6, 6))));
+        assertSame(0, Yatzy::yatzy(Roll::from(array(6, 6, 6, 6, 3))));
     }
 }

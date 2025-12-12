@@ -6,10 +6,33 @@ namespace Yatzy;
 
 class Yatzy
 {
+    public static function number(Roll $roll, int $searchedValue): int
+    {
+        return array_sum(
+            array_filter($roll->dice(), fn($die) => $die === $searchedValue)
+        );
+    }
+
     public static function yatzy(Roll $roll): int
     {
         $counts = array_count_values($roll->dice());
         return in_array(5, $counts, true) ? 50 : 0;
+    }
+
+    public static function threeOfAKind(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    {
+        $t = array_fill(0, 6, 0);
+        ++$t[$d1 - 1];
+        ++$t[$d2 - 1];
+        ++$t[$d3 - 1];
+        ++$t[$d4 - 1];
+        ++$t[$d5 - 1];
+        for ($i = 0; $i !== 6; $i++) {
+            if ($t[$i] >= 3) {
+                return ($i + 1) * 3;
+            }
+        }
+        return 0;
     }
 
     public static function twoPairs(int $d1, int $d2, int $d3, int $d4, int $d5): int
@@ -33,22 +56,6 @@ class Yatzy
             return $score * 2;
         }
 
-        return 0;
-    }
-
-    public static function threeOfAKind(int $d1, int $d2, int $d3, int $d4, int $d5): int
-    {
-        $t = array_fill(0, 6, 0);
-        ++$t[$d1 - 1];
-        ++$t[$d2 - 1];
-        ++$t[$d3 - 1];
-        ++$t[$d4 - 1];
-        ++$t[$d5 - 1];
-        for ($i = 0; $i !== 6; $i++) {
-            if ($t[$i] >= 3) {
-                return ($i + 1) * 3;
-            }
-        }
         return 0;
     }
 
@@ -123,22 +130,6 @@ class Yatzy
         }
 
         return 0;
-    }
-
-    /**
-     * @param int[] $dice
-     * @param int $searchedValue
-     * @return int
-     */
-    public static function number(array $dice, int $searchedValue): int
-    {
-        $sum = 0;
-        for ($i = 0; $i < sizeof($dice); $i++) {
-            if ($dice[$i] === $searchedValue) {
-                $sum += $searchedValue;
-            }
-        }
-        return $sum;
     }
 
     public static function scorePair(int $d1, int $d2, int $d3, int $d4, int $d5): int
