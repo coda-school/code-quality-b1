@@ -115,11 +115,15 @@ class Yatzy
         return $s;
     }
 
-    public function fours(): int
+    /**
+     * @param $dice
+     * @return int
+     */
+    public static function fours($dice): int
     {
         $sum = 0;
         for ($at = 0; $at !== 5; $at++) {
-            if ($this->dice[$at] === 4) {
+            if ($dice[$at] === 4) {
                 $sum += 4;
             }
         }
