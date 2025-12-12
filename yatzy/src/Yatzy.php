@@ -162,11 +162,6 @@ class Yatzy
         return 0;
     }
 
-    public function sixes(): int
-    {
-        return self::number($this->dice, 5);
-    }
-
     /**
      * @param int[] $dice
      * @param int $searchedValue
