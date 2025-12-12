@@ -168,16 +168,9 @@ class Yatzy
         return 0;
     }
 
-    public static function newChance(Roll $roll): int
+    public static function chance(Roll $roll): int
     {
-        $dice = $roll->dice();
-        $total = 0;
-        $total += $dice[0];
-        $total += $dice[1];
-        $total += $dice[2];
-        $total += $dice[3];
-        $total += $dice[4];
-        return $total;
+        return $roll->sumDice();
     }
 
 }

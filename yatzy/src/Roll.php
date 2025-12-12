@@ -33,4 +33,9 @@ class Roll
     {
         return $this->values;
     }
+
+    public function sumDice(): int
+    {
+        return array_sum($this->values);
+    }
 }

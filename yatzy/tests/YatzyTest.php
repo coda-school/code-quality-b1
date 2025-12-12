@@ -13,8 +13,8 @@ class YatzyTest extends TestCase
 {
     public function testChanceScoresSumOfAllDice(): void
     {
-        assertSame(15, Yatzy::newChance(Roll::from(array(2, 3, 4, 5, 1))));
-        assertSame(16, Yatzy::newChance(Roll::from(array(3, 3, 4, 5, 1))));
+        assertSame(15, Yatzy::chance(Roll::from(array(2, 3, 4, 5, 1))));
+        assertSame(16, Yatzy::chance(Roll::from(array(3, 3, 4, 5, 1))));
     }
 
     public function testYatzyScores50(): void
