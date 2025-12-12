@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Yatzy;
 
-class yatzy
+class Yatzy
 {
     /**
      * @var array<int, int>
