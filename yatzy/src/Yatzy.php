@@ -126,7 +126,7 @@ class Yatzy
         return $sum;
     }
 
-    public function Fives(): int
+    public function fives(): int
     {
         $s = 0;
         $i = 0;
@@ -160,7 +160,7 @@ class Yatzy
         return $sum;
     }
 
-    public function score_pair(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public function scorePair(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $counts = array_fill(0, 6, 0);
         ++$counts[$d1 - 1];
@@ -176,7 +176,7 @@ class Yatzy
         return 0;
     }
 
-    public static function two_pair(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public static function twoPairs(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $counts = array_fill(0, 6, 0);
         ++$counts[$d1 - 1];
@@ -200,7 +200,7 @@ class Yatzy
         return 0;
     }
 
-    public static function three_of_a_kind(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public static function threeOfAKind(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $t = array_fill(0, 6, 0);
         ++$t[$d1 - 1];

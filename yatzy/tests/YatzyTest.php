@@ -55,9 +55,9 @@ class YatzyTest extends TestCase
 
     public function testFives(): void
     {
-        self::assertSame(10, (new Yatzy(4, 4, 4, 5, 5))->Fives());
-        self::assertSame(15, (new Yatzy(4, 4, 5, 5, 5))->Fives());
-        self::assertSame(20, (new Yatzy(4, 5, 5, 5, 5))->Fives());
+        self::assertSame(10, (new Yatzy(4, 4, 4, 5, 5))->fives());
+        self::assertSame(15, (new Yatzy(4, 4, 5, 5, 5))->fives());
+        self::assertSame(20, (new Yatzy(4, 5, 5, 5, 5))->fives());
     }
 
     public function sixes_test(): void
@@ -69,23 +69,23 @@ class YatzyTest extends TestCase
 
     public function testOnePair(): void
     {
-        self::assertSame(6, (new Yatzy(3, 4, 3, 5, 6))->score_pair(3, 4, 3, 5, 6));
-        self::assertSame(10, (new Yatzy(5, 3, 3, 3, 5))->score_pair(5, 3, 3, 3, 5));
-        self::assertSame(12, (new Yatzy(5, 3, 6, 6, 5))->score_pair(5, 3, 6, 6, 5));
+        self::assertSame(6, (new Yatzy(3, 4, 3, 5, 6))->scorePair(3, 4, 3, 5, 6));
+        self::assertSame(10, (new Yatzy(5, 3, 3, 3, 5))->scorePair(5, 3, 3, 3, 5));
+        self::assertSame(12, (new Yatzy(5, 3, 6, 6, 5))->scorePair(5, 3, 6, 6, 5));
     }
 
     public function testTwoPair(): void
     {
-        self::assertSame(16, Yatzy::two_pair(3, 3, 5, 4, 5));
-        self::assertSame(18, Yatzy::two_pair(3, 3, 6, 6, 6));
-        self::assertSame(0, Yatzy::two_pair(3, 3, 6, 5, 4));
+        self::assertSame(16, Yatzy::twoPairs(3, 3, 5, 4, 5));
+        self::assertSame(18, Yatzy::twoPairs(3, 3, 6, 6, 6));
+        self::assertSame(0, Yatzy::twoPairs(3, 3, 6, 5, 4));
     }
 
     public function testThreeOfAKind(): void
     {
-        self::assertSame(9, Yatzy::three_of_a_kind(3, 3, 3, 4, 5));
-        self::assertSame(15, Yatzy::three_of_a_kind(5, 3, 5, 4, 5));
-        self::assertSame(9, Yatzy::three_of_a_kind(3, 3, 3, 2, 1));
+        self::assertSame(9, Yatzy::threeOfAKind(3, 3, 3, 4, 5));
+        self::assertSame(15, Yatzy::threeOfAKind(5, 3, 5, 4, 5));
+        self::assertSame(9, Yatzy::threeOfAKind(3, 3, 3, 2, 1));
     }
 
     public function testSmallStraight(): void
