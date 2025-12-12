@@ -6,21 +6,6 @@ namespace Yatzy;
 
 class Yatzy
 {
-    /**
-     * @var array<int, int>
-     */
-    private array $dice;
-
-    public function __construct(int $d1, int $d2, int $d3, int $d4, int $_5)
-    {
-        $this->dice = array_fill(0, 5, 0);
-        $this->dice[0] = $d1;
-        $this->dice[1] = $d2;
-        $this->dice[2] = $d3;
-        $this->dice[3] = $d4;
-        $this->dice[4] = $_5;
-    }
-
     public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $total = 0;
