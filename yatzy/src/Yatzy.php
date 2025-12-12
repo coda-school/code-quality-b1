@@ -49,31 +49,6 @@ class Yatzy
         return 0;
     }
 
-    /**
-     * @param int[] $dice
-     * @return int
-     */
-    public static function fours(array $dice): int
-    {
-        return self::number($dice, 4);
-    }
-
-    /**
-     * @param int[] $dice
-     * @param int $searchedValue
-     * @return int
-     */
-    public static function number(array $dice, int $searchedValue): int
-    {
-        $sum = 0;
-        for ($i = 0; $i < sizeof($dice); $i++) {
-            if ($dice[$i] === $searchedValue) {
-                $sum += $searchedValue;
-            }
-        }
-        return $sum;
-    }
-
     public static function twoPairs(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $counts = array_fill(0, 6, 0);
@@ -190,6 +165,22 @@ class Yatzy
     public function fives(): int
     {
         return self::number($this->dice, 5);
+    }
+
+    /**
+     * @param int[] $dice
+     * @param int $searchedValue
+     * @return int
+     */
+    public static function number(array $dice, int $searchedValue): int
+    {
+        $sum = 0;
+        for ($i = 0; $i < sizeof($dice); $i++) {
+            if ($dice[$i] === $searchedValue) {
+                $sum += $searchedValue;
+            }
+        }
+        return $sum;
     }
 
     public function sixes(): int
