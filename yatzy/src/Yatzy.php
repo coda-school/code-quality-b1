@@ -49,21 +49,6 @@ class Yatzy
         return 0;
     }
 
-    /*public static function oldYatzyScore(array $dice): int
-    {
-        // Etait buggé...
-        $counts = array_fill(0, 5, 0);
-        foreach ($dice as $die) {
-            ++$counts[$die - 1];
-        }
-        foreach (range(0, count($counts) - 1) as $i) {
-            if ($counts[$i] === 5) {
-                return 50;
-            }
-        }
-        return 0;
-    }*/
-
     public static function ones(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
         $sum = 0;
