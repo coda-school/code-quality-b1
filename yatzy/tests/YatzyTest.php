@@ -79,9 +79,9 @@ class YatzyTest extends TestCase
 
     public function testSmallStraight(): void
     {
-        assertSame(15, Yatzy::smallStraight(1, 2, 3, 4, 5));
-        assertSame(15, Yatzy::smallStraight(2, 3, 4, 5, 1));
-        assertSame(0, Yatzy::smallStraight(1, 2, 2, 4, 5));
+        assertSame(15, Yatzy::smallStraight(Roll::from(array(1, 2, 3, 4, 5))));
+        assertSame(15, Yatzy::smallStraight(Roll::from(array(2, 3, 4, 5, 1))));
+        assertSame(0, Yatzy::smallStraight(Roll::from(array(1, 2, 2, 4, 5))));
     }
 
     public function testLargeStraight(): void
