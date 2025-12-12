@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yatzy\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Yatzy\Roll;
 use Yatzy\Yatzy;
 use function PHPUnit\Framework\assertSame;
 
@@ -12,7 +13,7 @@ class YatzyTest extends TestCase
 {
     public function testChanceScoresSumOfAllDice(): void
     {
-        assertSame(15, Yatzy::chance(2, 3, 4, 5, 1));
+        assertSame(15, Yatzy::newChance(Roll::from(array(2, 3, 4, 5, 1))));
         assertSame(16, Yatzy::chance(3, 3, 4, 5, 1));
     }
 

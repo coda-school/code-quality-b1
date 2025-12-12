@@ -6,17 +6,6 @@ namespace Yatzy;
 
 class Yatzy
 {
-    public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5): int
-    {
-        $total = 0;
-        $total += $d1;
-        $total += $d2;
-        $total += $d3;
-        $total += $d4;
-        $total += $d5;
-        return $total;
-    }
-
     /**
      * @param array<int, int> $dice
      */
@@ -177,5 +166,22 @@ class Yatzy
             }
         }
         return 0;
+    }
+
+    public static function newChance(Roll $roll): int
+    {
+        $dice = $roll->dice();
+        return self::chance($dice[0], $dice[1], $dice[2], $dice[3], $dice[4]);
+    }
+
+    public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    {
+        $total = 0;
+        $total += $d1;
+        $total += $d2;
+        $total += $d3;
+        $total += $d4;
+        $total += $d5;
+        return $total;
     }
 }
