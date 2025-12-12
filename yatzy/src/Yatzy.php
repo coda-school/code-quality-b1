@@ -49,9 +49,9 @@ class Yatzy
         return 0;
     }
 
-    public static function ones(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public static function twos(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
-        return self::number(array($d1, $d2, $d3, $d4, $d5), 1);
+        return self::number(array($d1, $d2, $d3, $d4, $d5), 2);
     }
 
     /**
@@ -59,7 +59,7 @@ class Yatzy
      * @param int $searchedValue
      * @return int
      */
-    private static function number(array $dice, int $searchedValue): int
+    public static function number(array $dice, int $searchedValue): int
     {
         $sum = 0;
         for ($i = 0; $i < sizeof($dice); $i++) {
@@ -68,11 +68,6 @@ class Yatzy
             }
         }
         return $sum;
-    }
-
-    public static function twos(int $d1, int $d2, int $d3, int $d4, int $d5): int
-    {
-        return self::number(array($d1, $d2, $d3, $d4, $d5), 2);
     }
 
     public static function threes(int $d1, int $d2, int $d3, int $d4, int $d5): int
