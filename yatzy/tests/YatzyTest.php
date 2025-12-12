@@ -70,6 +70,13 @@ class YatzyTest extends TestCase
         assertSame(9, Yatzy::threeOfAKind(Roll::from(array(3, 3, 3, 2, 1))));
     }
 
+    public function testFourOfAKind(): void
+    {
+        assertSame(12, Yatzy::fourOfAKind(Roll::from(array(3, 3, 3, 4, 3))));
+        assertSame(20, Yatzy::fourOfAKind(Roll::from(array(5, 5, 5, 4, 5))));
+        assertSame(12, Yatzy::fourOfAKind(Roll::from(array(3, 3, 3, 2, 3))));
+    }
+
     public function testSmallStraight(): void
     {
         assertSame(15, Yatzy::smallStraight(1, 2, 3, 4, 5));

@@ -21,15 +21,24 @@ class Yatzy
 
     public static function threeOfAKind(Roll $roll): int
     {
+        return self::scoreNOfAKind($roll, 3);
+    }
+
+    private static function scoreNOfAKind(Roll $roll, int $nOfAKind): int
+    {
         $counts = array_count_values($roll->dice());
         foreach ($counts as $value => $count) {
-            if ($count >= 3) {
-                return $value * 3;
+            if ($count >= $nOfAKind) {
+                return $value * $nOfAKind;
             }
         }
         return 0;
     }
 
+    public static function fourOfAKind(Roll $roll): int
+    {
+        return self::scoreNOfAKind($roll, 4);
+    }
 
     public static function smallStraight(int $d1, int $d2, int $d3, int $d4, int $d5): int
     {
