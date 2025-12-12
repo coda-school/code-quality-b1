@@ -49,9 +49,13 @@ class Yatzy
         return 0;
     }
 
-    public static function threes(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    /**
+     * @param int[] $dice
+     * @return int
+     */
+    public static function fours(array $dice): int
     {
-        return self::number(array($d1, $d2, $d3, $d4, $d5), 3);
+        return self::number($dice, 4);
     }
 
     /**
@@ -68,15 +72,6 @@ class Yatzy
             }
         }
         return $sum;
-    }
-
-    /**
-     * @param int[] $dice
-     * @return int
-     */
-    public static function fours(array $dice): int
-    {
-        return self::number($dice, 4);
     }
 
     public static function twoPairs(int $d1, int $d2, int $d3, int $d4, int $d5): int
