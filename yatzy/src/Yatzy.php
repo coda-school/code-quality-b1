@@ -19,9 +19,9 @@ class Yatzy
         return in_array(5, $counts, true) ? 50 : 0;
     }
 
-    public static function threeOfAKind(int $d1, int $d2, int $d3, int $d4, int $d5): int
+    public static function threeOfAKind(Roll $roll): int
     {
-        $counts = array_count_values([$d1, $d2, $d3, $d4, $d5]);
+        $counts = array_count_values($roll->dice());
         foreach ($counts as $value => $count) {
             if ($count >= 3) {
                 return $value * 3;
