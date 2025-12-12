@@ -171,7 +171,13 @@ class Yatzy
     public static function newChance(Roll $roll): int
     {
         $dice = $roll->dice();
-        return self::chance($dice[0], $dice[1], $dice[2], $dice[3], $dice[4]);
+        $total = 0;
+        $total += $dice[0];
+        $total += $dice[1];
+        $total += $dice[2];
+        $total += $dice[3];
+        $total += $dice[4];
+        return $total;
     }
 
     public static function chance(int $d1, int $d2, int $d3, int $d4, int $d5): int
