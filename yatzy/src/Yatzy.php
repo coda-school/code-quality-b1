@@ -132,25 +132,8 @@ class Yatzy
         return 0;
     }
 
-    public static function scorePair(int $d1, int $d2, int $d3, int $d4, int $d5): int
-    {
-        $counts = array_fill(0, 6, 0);
-        ++$counts[$d1 - 1];
-        ++$counts[$d2 - 1];
-        ++$counts[$d3 - 1];
-        ++$counts[$d4 - 1];
-        ++$counts[$d5 - 1];
-        for ($at = 0; $at !== 6; $at++) {
-            if ($counts[6 - $at - 1] === 2) {
-                return (6 - $at) * 2;
-            }
-        }
-        return 0;
-    }
-
     public static function chance(Roll $roll): int
     {
         return $roll->sumDice();
     }
-
 }

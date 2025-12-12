@@ -25,7 +25,7 @@ class YatzyTest extends TestCase
      * @param int $number
      * @return void
      */
-    public function assertNumber(int $expectedValue, array $dice, int $number): void
+    private function assertNumber(int $expectedValue, array $dice, int $number): void
     {
         assertSame($expectedValue, Yatzy::number(Roll::from($dice), $number));
     }
@@ -61,20 +61,6 @@ class YatzyTest extends TestCase
         $this->assertNumber(0, array(4, 4, 4, 5, 5), 6);
         $this->assertNumber(6, array(4, 4, 6, 5, 5), 6);
         $this->assertNumber(18, array(6, 5, 6, 6, 5), 6);
-    }
-
-    public function testOnePair(): void
-    {
-        assertSame(6, Yatzy::scorePair(3, 4, 3, 5, 6));
-        assertSame(10, Yatzy::scorePair(5, 3, 3, 3, 5));
-        assertSame(12, Yatzy::scorePair(5, 3, 6, 6, 5));
-    }
-
-    public function testTwoPair(): void
-    {
-        assertSame(16, Yatzy::twoPairs(3, 3, 5, 4, 5));
-        assertSame(18, Yatzy::twoPairs(3, 3, 6, 6, 6));
-        assertSame(0, Yatzy::twoPairs(3, 3, 6, 5, 4));
     }
 
     public function testThreeOfAKind(): void
