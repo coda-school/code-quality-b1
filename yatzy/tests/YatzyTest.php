@@ -19,9 +19,9 @@ class YatzyTest extends TestCase
 
     public function testYatzyScores50(): void
     {
-        assertSame(50, Yatzy::yatzyScore([4, 4, 4, 4, 4]));
-        assertSame(50, Yatzy::yatzyScore([6, 6, 6, 6, 6]));
-        assertSame(0, Yatzy::yatzyScore([6, 6, 6, 6, 3]));
+        assertSame(50, Yatzy::yatzy(Roll::from(array(4, 4, 4, 4, 4))));
+        assertSame(50, Yatzy::yatzy(Roll::from(array(6, 6, 6, 6, 6))));
+        assertSame(0, Yatzy::yatzy(Roll::from(array(6, 6, 6, 6, 3))));
     }
 
     public function test1s(): void

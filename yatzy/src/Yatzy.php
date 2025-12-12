@@ -6,12 +6,9 @@ namespace Yatzy;
 
 class Yatzy
 {
-    /**
-     * @param array<int, int> $dice
-     */
-    public static function yatzyScore(array $dice): int
+    public static function yatzy(Roll $roll): int
     {
-        $counts = array_count_values($dice);
+        $counts = array_count_values($roll->dice());
         return in_array(5, $counts, true) ? 50 : 0;
     }
 
