@@ -5,12 +5,16 @@ declare(strict_types=1);
 namespace Yatzy\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Yatzy\InvalidRollException;
 use Yatzy\Roll;
 use Yatzy\Yatzy;
 use function PHPUnit\Framework\assertSame;
 
 class YatzyTest extends TestCase
 {
+    /**
+     * @throws InvalidRollException
+     */
     public function testOnes(): void
     {
         $this->assertNumber(1, array(1, 2, 3, 4, 5), 1);
@@ -24,24 +28,34 @@ class YatzyTest extends TestCase
      * @param int[] $dice
      * @param int $number
      * @return void
+     * @throws InvalidRollException
      */
     private function assertNumber(int $expectedValue, array $dice, int $number): void
     {
         assertSame($expectedValue, Yatzy::number(Roll::from($dice), $number));
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testTwos(): void
     {
         $this->assertNumber(4, array(1, 2, 3, 2, 6), 2);
         $this->assertNumber(10, array(2, 2, 2, 2, 2), 2);
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testThrees(): void
     {
         $this->assertNumber(6, array(1, 2, 3, 2, 3), 3);
         $this->assertNumber(12, array(2, 3, 3, 3, 3), 3);
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testFours(): void
     {
         $this->assertNumber(12, array(4, 4, 4, 5, 5), 4);
@@ -49,6 +63,9 @@ class YatzyTest extends TestCase
         $this->assertNumber(4, array(4, 5, 5, 5, 5), 4);
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testFives(): void
     {
         $this->assertNumber(10, array(4, 4, 4, 5, 5), 5);
@@ -56,6 +73,9 @@ class YatzyTest extends TestCase
         $this->assertNumber(20, array(4, 5, 5, 5, 5), 5);
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testSixes(): void
     {
         $this->assertNumber(0, array(4, 4, 4, 5, 5), 6);
@@ -63,6 +83,9 @@ class YatzyTest extends TestCase
         $this->assertNumber(18, array(6, 5, 6, 6, 5), 6);
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testThreeOfAKind(): void
     {
         assertSame(9, Yatzy::threeOfAKind(Roll::from(array(3, 3, 3, 4, 5))));
@@ -70,6 +93,9 @@ class YatzyTest extends TestCase
         assertSame(9, Yatzy::threeOfAKind(Roll::from(array(3, 3, 3, 2, 1))));
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testFourOfAKind(): void
     {
         assertSame(12, Yatzy::fourOfAKind(Roll::from(array(3, 3, 3, 4, 3))));
@@ -84,6 +110,9 @@ class YatzyTest extends TestCase
         assertSame(0, Yatzy::smallStraight(Roll::from(array(1, 2, 2, 4, 5))));
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testLargeStraight(): void
     {
         assertSame(20, Yatzy::largeStraight(Roll::from(array(6, 2, 3, 4, 5))));
@@ -91,18 +120,27 @@ class YatzyTest extends TestCase
         assertSame(0, Yatzy::largeStraight(Roll::from(array(1, 2, 2, 4, 5))));
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testFullHouse(): void
     {
         assertSame(18, Yatzy::fullHouse(Roll::from(array(6, 2, 2, 2, 6))));
         assertSame(0, Yatzy::fullHouse(Roll::from(array(2, 3, 4, 5, 6))));
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testChanceScoresSumOfAllDice(): void
     {
         assertSame(15, Yatzy::chance(Roll::from(array(2, 3, 4, 5, 1))));
         assertSame(16, Yatzy::chance(Roll::from(array(3, 3, 4, 5, 1))));
     }
 
+    /**
+     * @throws InvalidRollException
+     */
     public function testYatzyScores50(): void
     {
         assertSame(50, Yatzy::yatzy(Roll::from(array(4, 4, 4, 4, 4))));
