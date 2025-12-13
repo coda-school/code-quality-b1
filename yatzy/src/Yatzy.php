@@ -19,8 +19,9 @@ class Yatzy
 
     public static function yatzy(Roll $roll): int
     {
-        $counts = array_count_values($roll->dice());
-        return in_array(5, $counts, true) ? self::YATZY_SCORE : 0;
+        return in_array(5, $roll->groupByValues(), true)
+            ? self::YATZY_SCORE
+            : 0;
     }
 
     public static function threeOfAKind(Roll $roll): int
@@ -30,7 +31,7 @@ class Yatzy
 
     private static function scoreNOfAKind(Roll $roll, int $nOfAKind): int
     {
-        $counts = array_count_values($roll->dice());
+        $counts = $roll->groupByValues();
         foreach ($counts as $value => $count) {
             if ($count >= $nOfAKind) {
                 return $value * $nOfAKind;
@@ -59,7 +60,7 @@ class Yatzy
 
     public static function fullHouse(Roll $roll): int
     {
-        $counts = array_count_values($roll->dice());
+        $counts = $roll->groupByValues();
         $hasPair = false;
         $hasThree = false;
         $pairValue = 0;
