@@ -99,7 +99,7 @@ final class GildedRose
 ```
 
 ### **Concepts**
-Slides [Clean Code](files/Clean-code.pptx)
+Slides [Clean Code](files/clean-code.pdf)
 
 ### **Concrete Practice**
 * Atelier de refactoring express (15 min) : `Food` 
@@ -113,7 +113,7 @@ Slides [Clean Code](files/Clean-code.pptx)
 ---
 
 ## 3. Et la charge cognitive dans tout ça ?
-On va parler cerveau [ici](clean-code/Clean%20Code%20du%20point%20de%20vue%20de%20la%20cognition.pptx)
+On va parler cerveau [ici](https://speakerdeck.com/thirion/clean-code-du-point-de-vue-de-la-cognition)
 
 ## **4. Linters**
 ### **Connect**
