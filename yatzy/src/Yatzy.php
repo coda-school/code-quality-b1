@@ -13,7 +13,7 @@ class Yatzy
     public static function number(Roll $roll, int $searchedValue): int
     {
         return array_sum(
-            array_filter($roll->dice(), fn($die) => $die === $searchedValue)
+            $roll->filter($searchedValue)
         );
     }
 
@@ -47,15 +47,16 @@ class Yatzy
 
     public static function smallStraight(Roll $roll): int
     {
-        $dice = $roll->dice();
-        sort($dice);
-        return ($dice === [1, 2, 3, 4, 5]) ? self::SMALL_STRAIGHT : 0;
+        return $roll->sortedDice() === [1, 2, 3, 4, 5]
+            ? self::SMALL_STRAIGHT
+            : 0;
     }
 
     public static function largeStraight(Roll $roll): int
     {
-        $dice = $roll->dice();
-        return (count(array_unique($dice)) === 5 && !array_diff([2, 3, 4, 5, 6], $dice)) ? self::LARGE_STRAIGHT : 0;
+        return $roll->sortedDice() === [2, 3, 4, 5, 6]
+            ? self::LARGE_STRAIGHT
+            : 0;
     }
 
     public static function fullHouse(Roll $roll): int

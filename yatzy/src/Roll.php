@@ -11,14 +11,14 @@ class Roll
     /**
      * @var int[]
      */
-    private array $values;
+    private array $dice;
 
     /**
-     * @param int[] $values
+     * @param int[] $dice
      */
-    private function __construct(array $values)
+    private function __construct(array $dice)
     {
-        $this->values = $values;
+        $this->dice = $dice;
     }
 
     /**
@@ -62,7 +62,7 @@ class Roll
 
     public function sumDice(): int
     {
-        return array_sum($this->values);
+        return array_sum($this->dice);
     }
 
     /**
@@ -70,14 +70,27 @@ class Roll
      */
     public function groupByValues(): array
     {
-        return array_count_values($this->dice());
+        return array_count_values($this->dice);
+    }
+
+    /**
+     * @param int $searchedValue
+     * @return int[]
+     */
+    public function filter(int $searchedValue): array
+    {
+        return array_filter($this->dice, fn($die) => $die === $searchedValue);
     }
 
     /**
      * @return int[]
      */
-    public function dice(): array
+    public function sortedDice(): array
     {
-        return $this->values;
+        $originalArray = $this->dice;
+        $sortedArray = $originalArray;
+        sort($sortedArray);
+
+        return $sortedArray;
     }
 }
